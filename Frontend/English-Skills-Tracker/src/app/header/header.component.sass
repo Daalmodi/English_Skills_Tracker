@@ -1,7 +1,8 @@
+@use '../var.sass' as var 
 *
     border: none
     padding: 0
-    background: none
+    background-color: var.$primary-color
     margin: 0
 
 .header-container 
@@ -10,20 +11,47 @@
     display: grid
     grid-template-areas: "Logo nav user"
     width: 100%
-    border-bottom: 1rem thick blue 
+    border-bottom-style: solid 
+    border-bottom-width:  0.8rem
+    border-image-slice: 1
+    border-image-source: var.$primary-gradient
+    
+    
+    
+    
     .Logo
         grid-area: Logo
-        background-color: red
+        align-content: center
         align-items: start
+        padding: 1rem 0rem 0.5rem 2rem // top right bottom left
         img
             width: 5rem
     .nav
-        background-color: orange
+
         grid-area: nav
+        width: 100%
+        align-self: center
+
+        div
+             
+            display: flex
+            justify-content: space-evenly
+            width: 100%
+        
+            
+            
+        
+        
     
     .user
-        background-color: green
         grid-area: user
+        align-self: center
+        padding-right: 2rem
+        div
+            display: flex
+            justify-content: end
+
+
 
     
     
