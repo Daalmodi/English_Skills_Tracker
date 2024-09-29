@@ -1,0 +1,18 @@
+
+<div id="card-area">
+    <div class="wrapper">
+                @for (item of this.skills.id; track $index) {
+                    <div class="box-area">
+                        <div class="box">
+                            <img [src]="this.skills.image[item]" alt="">
+                            <div class="overlay">
+                                <h3>{{this.skills.title[item] }}</h3>
+                                <p>{{this.skills.description[item]}}</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        
+    </div>
+    
