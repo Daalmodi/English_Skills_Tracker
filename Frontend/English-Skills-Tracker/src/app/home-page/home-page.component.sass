@@ -1,9 +1,8 @@
 @use '../var.sass' as var
+@import '../mixins.sass'
 *
-    border: none
-    padding: 0
-    background: var.$primary-color
-    margin: 0
+    @include default()
+    
 
 .img-content
     position: relative
