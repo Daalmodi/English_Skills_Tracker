@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Skills } from '../models/skills';
+import { Skills } from '../../models/skills';
 
 @Component({
   selector: 'app-card-template',

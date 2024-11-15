@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
-import { CardTemplateComponent } from '../card-template/card-template.component';
-import { FooterComponent } from '../footer/footer.component';
+import { HeaderComponent } from '../../components/header/header.component';
+import { CardTemplateComponent } from '../../components/card-template/card-template.component';
+import { FooterComponent } from '../../components/footer/footer.component';
+
 @Component({
   selector: 'app-home-page',
   standalone: true,
