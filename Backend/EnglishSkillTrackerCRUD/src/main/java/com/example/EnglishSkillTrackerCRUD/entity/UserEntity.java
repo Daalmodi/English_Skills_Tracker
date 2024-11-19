@@ -1,7 +1,7 @@
 package com.example.EnglishSkillTrackerCRUD.entity;
 import jakarta.persistence.GenerationType;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotNull;
+// import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -24,7 +25,7 @@ public class UserEntity {
     private String name; 
 
     @Column(updatable = true,nullable = true)
-    private Instant createdAt = Instant.now();
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @NotNull
     @Column(unique = true,nullable = false)
@@ -32,7 +33,17 @@ public class UserEntity {
 
     @NotNull
     @Column( unique = true,nullable = false )
+    // @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")
     private String password;
+
+    @Column(nullable = true)
+    private LocalDateTime lastLoginAt;
+
+    @Column(nullable = false, length = 10)
+    private String status = "ACTIVE" ;
+
+    @Column(nullable = false, length = 20)
+    private String role = "Student";
 
     public Long getId() {
         return id;
@@ -50,11 +61,11 @@ public class UserEntity {
         this.name = name;
     }
 
-    public Instant getCreatedAt() {
+    public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(Instant createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -72,5 +83,31 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
-    } 
+    }
+
+    public LocalDateTime getLastLoginAt() {
+        return lastLoginAt;
+    }
+
+    public void setLastLoginAt(LocalDateTime lastLoginAt) {
+        this.lastLoginAt = lastLoginAt;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+
 }

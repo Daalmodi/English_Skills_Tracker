@@ -12,4 +12,20 @@ export class UsersService {
   getUsers():Observable<any>{
     return this.http.get<any>(this.apiUrl);
   }
+
+  createUser():Observable<any>{
+    return this.http.post<any>(this.apiUrl,{
+      "name": "paula",
+      "email": "paula@d.com",
+      "status":"ACTIVE",
+      "password": "Dandsaiii",
+      "role":"ADMIN"
+
+    });
+  }
+
+  deleteUser(id:number):Observable<any>{
+
+    return this.http.delete<any>(`${this.apiUrl}`+`/${id}`);
+  }
 }
