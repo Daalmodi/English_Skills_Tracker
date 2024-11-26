@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users/users.service';
 import { Users } from '../../models/users';
 
@@ -9,20 +9,22 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatButtonModule} from '@angular/material/button';
-
+import {MatDialogModule, MatDialog} from '@angular/material/dialog';
+import { CreateUserDialogComponent } from '../../components/create-user-dialog/create-user-dialog.component';
 
 
 @Component({
   selector: 'app-roles-page',
   standalone: true,
-  imports: [MatIconModule, HeaderComponent,MatTableModule,MatSortModule,MatPaginatorModule,MatButtonModule],
+  imports: [MatIconModule, HeaderComponent,MatTableModule,MatSortModule,MatPaginatorModule,MatButtonModule,MatDialogModule
+
+  ],
   templateUrl: './roles-page.component.html',
   styleUrl: './roles-page.component.sass'
 })
 export class RolesPageComponent implements OnInit{
   users:Users[]=[];
-  checked = false;
-  disabled = false;
+  readonly dialog = inject(MatDialog);
   constructor(private usersService: UsersService){}
 
   ngOnInit():void{
@@ -40,8 +42,12 @@ export class RolesPageComponent implements OnInit{
     
   }
 
-  createUser(){
-    this.usersService.createUser().subscribe();
+  createUserDialog(){
+
+    const dialogRef =this.dialog.open(CreateUserDialogComponent);
+    dialogRef.afterClosed().subscribe(newUser => {
+      this.usersService.createUser(newUser).subscribe();
+    });
     
   }
 

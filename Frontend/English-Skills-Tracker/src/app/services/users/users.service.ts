@@ -13,15 +13,11 @@ export class UsersService {
     return this.http.get<any>(this.apiUrl);
   }
 
-  createUser():Observable<any>{
-    return this.http.post<any>(this.apiUrl,{
-      "name": "paula",
-      "email": "paula@d.com",
-      "status":"ACTIVE",
-      "password": "Dandsaiii",
-      "role":"ADMIN"
+  createUser(newUser:any):Observable<any>{
 
-    });
+    console.log(newUser);
+    
+    return this.http.post<any>(this.apiUrl,newUser);
   }
 
   deleteUser(id:number):Observable<any>{

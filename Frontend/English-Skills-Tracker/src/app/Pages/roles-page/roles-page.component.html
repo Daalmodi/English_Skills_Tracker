@@ -44,6 +44,6 @@
     <tr mat-header-row *matHeaderRowDef="['id', 'name', 'email', 'createdAt', 'status', 'lastLoginAt','role','actions']"></tr>
     <tr mat-row *matRowDef="let row; columns: ['id', 'name', 'email', 'createdAt', 'status', 'lastLoginAt','role','actions']"></tr>
   </table>
-  <button mat-fab color="accent" (click)="createUser()"> +</button>
+  <button mat-fab color="accent" (click)="createUserDialog()">+</button>
   
 

@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>Crea un usuario nuevo</h2>
+<mat-dialog-content class="mat-typography">
+   <form #formUser="ngForm" (ngSubmit)="onSubmit()" >
+      <mat-form-field>
+         <mat-label>Nombre</mat-label>
+         <input matInput required [(ngModel)]="user.name" name="name" id="name">
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+         <mat-label>Email</mat-label>
+         <input matInput [(ngModel)]="user.email" name="email" id="email">
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
+         <mat-label>Rol</mat-label>
+       <mat-select [(ngModel)]="user.rol" name="rol" id="rol">
+         <mat-option value="ADMIN">Administrador</mat-option>
+         <mat-option value="STUDENT">Estudiante</mat-option>
+       </mat-select>
+      </mat-form-field>
+     <mat-dialog-actions align="end">
+         <button mat-button mat-dialog-close>Cancel</button>
+         <button mat-button type="submit">Crear</button>
+     </mat-dialog-actions> 
+   </form>
+</mat-dialog-content>   
+ 
+
