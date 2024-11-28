@@ -28,16 +28,17 @@ export class RolesPageComponent implements OnInit{
   constructor(private usersService: UsersService){}
 
   ngOnInit():void{
-    this.usersService.getUsers().subscribe((response:any)=>{
+    this.usersService.getUsersObservable().subscribe((response:Users[])=>{
       this.users= response;
     });
+    this.usersService.getUsers().subscribe();
   }
 
-  editUser(user:any){
+  editUser(user:Users){
     console.log(user);
     
   }
-  deleteUser(user:any){
+  deleteUser(user:Users){
     this.usersService.deleteUser(user.id).subscribe();
     
   }
@@ -45,8 +46,10 @@ export class RolesPageComponent implements OnInit{
   createUserDialog(){
 
     const dialogRef =this.dialog.open(CreateUserDialogComponent);
-    dialogRef.afterClosed().subscribe(newUser => {
-      this.usersService.createUser(newUser).subscribe();
+    dialogRef.afterClosed().subscribe((result) => {
+      if(result.dialogStatus){
+        this.usersService.createUser(result.newUser).subscribe();
+      }
     });
     
   }

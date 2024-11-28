@@ -17,6 +17,7 @@ import {FormsModule} from '@angular/forms';
 })
 export class CreateUserDialogComponent {
 
+  public  dialogStatus = false;
   constructor(public dialogRef: MatDialogRef<CreateUserDialogComponent>) { }
  user:Users = {
   id:NaN,
@@ -34,12 +35,16 @@ export class CreateUserDialogComponent {
     const newUser = {
       name: this.user.name,
       email: this.user.email,
-      password: 'dsadsa', // Debes agregar un campo para el password
+      password: this.user.name, // Contraseña por defecto  es el nombre del usuario
       status: this.user.status,
       role: this.user.rol,
+      lastLoginAt: "Not Initialized"
+
     };
 
-    this.dialogRef.close(newUser);
+    this.dialogStatus = true;// Estado  verdadero del modal
+
+    this.dialogRef.close({newUser, dialogStatus: this.dialogStatus});
   }
   
 }
