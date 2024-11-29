@@ -41,6 +41,16 @@ export class UsersService {
     );
   }
 
+  editUserId(updatedUser:Users):Observable<any>{
+    return this.http.put(`${this.apiUrl}`+`/${updatedUser.id}`,updatedUser).pipe(
+      tap(()=>{
+        this.getUsers().subscribe();
+      })
+    );
+  }
+
+  
+
   getUsersObservable(): Observable<Users[]> {
     return this.userSubject.asObservable();
   }

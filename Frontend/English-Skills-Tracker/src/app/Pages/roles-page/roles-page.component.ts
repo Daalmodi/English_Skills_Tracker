@@ -11,6 +11,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule, MatDialog} from '@angular/material/dialog';
 import { CreateUserDialogComponent } from '../../components/create-user-dialog/create-user-dialog.component';
+import { UpdateUserDialogComponent } from '../../components/update-user-dialog/update-user-dialog.component';
 
 
 @Component({
@@ -35,11 +36,20 @@ export class RolesPageComponent implements OnInit{
   }
 
   editUser(user:Users){
-    console.log(user);
-    
+    const dialogRef = this.dialog.open(UpdateUserDialogComponent,{
+      data:user
+    });
+    dialogRef.afterClosed().subscribe((result)=>{
+      if(result.dialogStatus){
+        this.usersService.editUserId(result.updatedUser).subscribe();
+      }
+    })
   }
+
+
   deleteUser(user:Users){
-    this.usersService.deleteUser(user.id).subscribe();
+
+  this.usersService.deleteUser(user.id).subscribe();
     
   }
 

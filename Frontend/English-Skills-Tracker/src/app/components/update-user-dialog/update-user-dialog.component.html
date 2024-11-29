@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Edit User whith id: {{user.id}}</h2>
+<mat-dialog-content>
+    <form #editUserForm="ngForm"(ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="user.name" name="name" id="name">
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput [(ngModel)]="user.email" name="email">
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
+        <mat-label>Role</mat-label>
+        <mat-select [(ngModel)]="user.role" name="role" id="role">
+          <mat-option value="ADMINISTRATOR">Administrator</mat-option>
+          <mat-option value="STUDENT">Student</mat-option>
+        </mat-select>
+       </mat-form-field>
+        <br/>
+        <mat-form-field>
+            <mat-label>Status</mat-label>
+            <mat-select [(ngModel)]="user.status" name="status" id="status">
+              <mat-option value="ACTIVE">Active</mat-option>
+              <mat-option value="INACTIVE">Inactive</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br/>
+        <mat-dialog-actions align="end">
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button mat-button type="submit">Update</button>
+        </mat-dialog-actions> 
+    </form>
+</mat-dialog-content>

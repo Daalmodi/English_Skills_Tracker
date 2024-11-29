@@ -5,5 +5,5 @@ export interface Users{
     createdAt:string;
     status:string;
     lastLoginAt: string;
-    rol:string;
+    role:string;
 }
