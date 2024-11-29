@@ -61,6 +61,16 @@ public class UserService {
        userRepository.delete(userEntity);
     }
 
+    public UserDTO editUserId(Long id, UserDTO userDTO) {
+        UserEntity userEntity = userRepository.findById(id).orElseThrow(()-> new ResourceNotFoundException("User not found"));
+        userEntity.setName(userDTO.getName());
+        userEntity.setEmail(userDTO.getEmail());
+        userEntity.setRole(userDTO.getRole());
+        userEntity.setStatus(userDTO.getStatus());
+        UserEntity userEntityEdited = userRepository.save(userEntity);
+        return convertDTO(userEntityEdited);
+    }
+
         
     
 }

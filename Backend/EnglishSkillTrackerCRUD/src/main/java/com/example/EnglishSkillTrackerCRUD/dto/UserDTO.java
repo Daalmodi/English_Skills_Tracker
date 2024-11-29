@@ -6,12 +6,11 @@ public class UserDTO {
     private Long id;
     private String name;
     private String email;
-    private LocalDateTime createdAt; 
+    private LocalDateTime createdAt =LocalDateTime.now(); 
     private String role;
     private String password;
     private String status;
-    private LocalDateTime lastLoginAt;
-    
+    private String lastLoginAt;
     public String getRole() {
         return role;
     }
@@ -30,10 +29,10 @@ public class UserDTO {
     public void setStatus(String status) {
         this.status = status;
     }
-    public LocalDateTime getLastLoginAt() {
+    public String getLastLoginAt() {
         return lastLoginAt;
     }
-    public void setLastLoginAt(LocalDateTime lastLoginAt) {
+    public void setLastLoginAt(String lastLoginAt) {
         this.lastLoginAt = lastLoginAt;
     }
     public Long getId() {

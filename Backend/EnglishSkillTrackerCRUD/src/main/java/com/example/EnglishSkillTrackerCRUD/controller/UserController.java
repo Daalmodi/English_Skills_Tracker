@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.EnglishSkillTrackerCRUD.dto.UserDTO;
 import com.example.EnglishSkillTrackerCRUD.service.UserService;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/users")//ruta de end point  para el manejo de ususarios  CRUD 
 public class UserController {
     @Autowired
     private UserService userService;
@@ -37,6 +39,12 @@ public class UserController {
     public ResponseEntity<Void> deleteUserById(@PathVariable Long id){
         userService.deleteUserById(id);
         return ResponseEntity.noContent().build();
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<UserDTO> editUserId(@PathVariable Long id, @RequestBody UserDTO userDTO) {
+        UserDTO userDTOEdited = userService.editUserId(id,userDTO);
+        
+        return ResponseEntity.ok(userDTOEdited);
     }
 
 

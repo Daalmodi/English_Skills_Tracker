@@ -37,7 +37,7 @@ public class UserEntity {
     private String password;
 
     @Column(nullable = true)
-    private LocalDateTime lastLoginAt;
+    private String lastLoginAt;
 
     @Column(nullable = false, length = 10)
     private String status = "ACTIVE" ;
@@ -85,11 +85,11 @@ public class UserEntity {
         this.password = password;
     }
 
-    public LocalDateTime getLastLoginAt() {
+    public String getLastLoginAt() {
         return lastLoginAt;
     }
 
-    public void setLastLoginAt(LocalDateTime lastLoginAt) {
+    public void setLastLoginAt(String lastLoginAt) {
         this.lastLoginAt = lastLoginAt;
     }
 
