@@ -16,19 +16,17 @@ import { Users } from '../../models/users';
 export class UpdateUserDialogComponent {
   public  dialogStatus = false;
   public user: Users;
+  
   constructor(
     public dialogRef: MatDialogRef<UpdateUserDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Users
-  ) { this.user=data;}
+  ) 
+  { 
+    this.user={...data};
+  }
 
   onSubmit(){
-    const updatedUser = {
-      id:this.user.id,
-      name: this.user.name,
-      email: this.user.email,
-      status: this.user.status,
-      role: this.user.role,
-    };
+    const updatedUser = {...this.user};// Crea una copia 
     this.dialogStatus = true;
     this.dialogRef.close({updatedUser,dialogStatus:this.dialogStatus});
   }

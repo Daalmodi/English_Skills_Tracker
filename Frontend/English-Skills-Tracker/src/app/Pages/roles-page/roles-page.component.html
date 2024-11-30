@@ -1,48 +1,48 @@
 <app-header></app-header>
-<table mat-table [dataSource]="users" matSort class="mat-elevation-z8">
+<table mat-table [dataSource]="users"  >
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+      <th mat-header-cell *matHeaderCellDef > ID </th>
       <td mat-cell *matCellDef="let user"> {{ user.id }} </td>
     </ng-container>
   
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+      <th mat-header-cell *matHeaderCellDef > Name </th>
       <td mat-cell *matCellDef="let user"> {{ user.name }} </td>
     </ng-container>
   
     <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Correo electrónico </th>
+      <th mat-header-cell *matHeaderCellDef > Email </th>
       <td mat-cell *matCellDef="let user"> {{ user.email }} </td>
     </ng-container>
   
     <ng-container matColumnDef="createdAt">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha de creación </th>
+      <th mat-header-cell *matHeaderCellDef > Created At </th>
       <td mat-cell *matCellDef="let user"> {{ user.createdAt }} </td>
     </ng-container>
   
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+      <th mat-header-cell *matHeaderCellDef > Status </th>
       <td mat-cell *matCellDef="let user"> {{ user.status }} </td>
     </ng-container>
   
     <ng-container matColumnDef="lastLoginAt">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Último inicio de sesión </th>
+      <th mat-header-cell *matHeaderCellDef > Last Login At  </th>
       <td mat-cell *matCellDef="let user"> {{ user.lastLoginAt }} </td>
     </ng-container>
     <ng-container matColumnDef="role">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Rol del Usuario </th>
+      <th mat-header-cell *matHeaderCellDef > User Role </th>
       <td mat-cell *matCellDef="let user"> {{ user.role }} </td>
     </ng-container>
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+      <th mat-header-cell *matHeaderCellDef > Actions </th>
       <td mat-cell *matCellDef="let user"> 
-        <button mat-button (click)="editUser(user)">Actualizar</button>
-        <button mat-button (click)="deleteUser(user)">Eliminar</button>
+        <button mat-icon-button (click)="editUser(user)"><mat-icon  id="edit">edit</mat-icon></button>
+        <button mat-icon-button (click)="deleteUser(user)"><mat-icon id="delete">delete_forever</mat-icon></button>
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="['id', 'name', 'email', 'createdAt', 'status', 'lastLoginAt','role','actions']"></tr>
-    <tr mat-row *matRowDef="let row; columns: ['id', 'name', 'email', 'createdAt', 'status', 'lastLoginAt','role','actions']"></tr>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
   </table>
   <button mat-fab color="accent" (click)="createUserDialog()">+</button>
   

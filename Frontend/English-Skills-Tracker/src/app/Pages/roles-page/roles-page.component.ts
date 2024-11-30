@@ -14,28 +14,32 @@ import { CreateUserDialogComponent } from '../../components/create-user-dialog/c
 import { UpdateUserDialogComponent } from '../../components/update-user-dialog/update-user-dialog.component';
 
 
+
 @Component({
   selector: 'app-roles-page',
   standalone: true,
-  imports: [MatIconModule, HeaderComponent,MatTableModule,MatSortModule,MatPaginatorModule,MatButtonModule,MatDialogModule
-
-  ],
+  imports: [MatIconModule, HeaderComponent,MatTableModule,MatSortModule,MatPaginatorModule,MatButtonModule,MatDialogModule],
   templateUrl: './roles-page.component.html',
   styleUrl: './roles-page.component.sass'
 })
 export class RolesPageComponent implements OnInit{
+ 
   users:Users[]=[];
+  
+  columnsToDisplay=['id', 'name', 'email', 'createdAt', 'status', 'lastLoginAt','role','actions'];
   readonly dialog = inject(MatDialog);
   constructor(private usersService: UsersService){}
 
   ngOnInit():void{
     this.usersService.getUsersObservable().subscribe((response:Users[])=>{
       this.users= response;
+       
     });
     this.usersService.getUsers().subscribe();
   }
 
   editUser(user:Users){
+    
     const dialogRef = this.dialog.open(UpdateUserDialogComponent,{
       data:user
     });
