@@ -1,8 +1,12 @@
 package com.example.EnglishSkillTrackerCRUD.config;
 import java.util.Arrays;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler;
+import org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -15,6 +19,8 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @Configuration
 @EnableWebSecurity
 public class SecureConfig {
+    
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -25,12 +31,13 @@ public class SecureConfig {
         httpSecurity
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf -> csrf.disable())
+            .httpBasic(Customizer.withDefaults())
             .authorizeHttpRequests(authorize -> authorize
-                                    // .requestMatchers("/api/**").authenticated()
+                                    .requestMatchers("/users/roles**").hasRole("ADMINISTRATOR")
                                     .anyRequest().permitAll())   
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-        //JWT
+        
 
         return httpSecurity.build();
     }
@@ -49,4 +56,11 @@ public class SecureConfig {
 
         return source;
     }
+    @Bean
+    public DefaultMethodSecurityExpressionHandler methodSecurityExpressionHandler(){
+        DefaultMethodSecurityExpressionHandler handler =new DefaultMethodSecurityExpressionHandler();
+        handler.setRoleHierarchy(new RoleHierarchyImpl());
+        return handler;
+    }
+
 }
