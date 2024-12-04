@@ -21,6 +21,7 @@ public class UserService {
     public UserDTO createUser(UserDTO userDTO) {
         UserEntity userEntity =convertEntity(userDTO);
         String passwordHash =passwordEncoder.encode(userEntity.getPassword());
+       
         userEntity.setPassword(passwordHash);
         UserEntity userEntityCreated = userRepository.save(userEntity);
         return convertDTO(userEntityCreated);
@@ -35,6 +36,7 @@ public class UserService {
         userDTO.setLastLoginAt(userEntity.getLastLoginAt());
         userDTO.setStatus(userEntity.getStatus());
         userDTO.setRole(userEntity.getRole());
+        userDTO.setPassword(userEntity.getPassword());
         return userDTO;
     }
         
@@ -47,6 +49,7 @@ public class UserService {
         userEntity.setLastLoginAt(userDto.getLastLoginAt());
         userEntity.setStatus(userDto.getStatus());
         userEntity.setRole(userDto.getRole());
+        userEntity.setPassword(userDto.getPassword());
         return userEntity;
     }
 
