@@ -26,7 +26,8 @@ export class CreateUserDialogComponent {
   lastLoginAt:"",
   createdAt:"",
   status:"",
-  role :""
+  role :"",
+  password:""
  };
 
  

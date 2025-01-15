@@ -1,0 +1,19 @@
+
+<h2 mat-dialog-title>Login</h2>
+<mat-dialog-content>
+    <form #loginUserForm="ngForm" (ngSubmit)="onSubmit(user)" >
+        <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput [(ngModel)]="user.email" name="email">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput [(ngModel)]="user.password" name="password">
+        </mat-form-field>
+        <mat-dialog-actions align="end">
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button mat-button type="submit">Login</button>
+        </mat-dialog-actions>
+    </form>
+</mat-dialog-content>
