@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { Users } from '../../models/users';
 import { AuthService } from '../../services/auth/auth.service';
 import { Login } from '../../models/login';
-import { response } from 'express';
+
 
 @Component({
   selector: 'app-login-dialog',
@@ -19,8 +19,12 @@ import { response } from 'express';
 export class LoginDialogComponent {
 
   public user:Users; 
-
-  constructor( private authService:AuthService){
+  public  dialogStatus = false;
+  constructor( 
+    private authService:AuthService,
+    public dialogRef: MatDialogRef<LoginDialogComponent>
+  
+  ){
     this.user={
       id:NaN,
       name:"",
@@ -44,9 +48,10 @@ onSubmit(result:Users){
   password:result.password
  }
  this.authService.loginUser(userlogged).subscribe((response:any)=>{
-  localStorage.setItem('token',response.token);
-  
+  localStorage.setItem('token',JSON.stringify(response));// Guarda el token en el local storage 
  });
+  this.dialogStatus = true; // Estado  verdadero del modal 
+  this.dialogRef.close(this.dialogStatus);
  
  
 }

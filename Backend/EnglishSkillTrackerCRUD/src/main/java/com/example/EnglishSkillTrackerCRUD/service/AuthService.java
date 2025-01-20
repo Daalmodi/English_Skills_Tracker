@@ -42,6 +42,8 @@ UserEntity userEntity = userRepository.findAll()//encuentra todos los usuarios
         Map<String,Object> claims = new HashMap<>();//crea un mapa de claims de tipo string y objeto, llave valor con instancia de hashmap,hashmap es una implementacion de map que permite valores nulos y una llave nula
         claims.put("email", userEntity.getEmail());//agrega el email del usuario al mapa de claims
         claims.put("role", userEntity.getRole());//agrega el rol del usuario al mapa de claims
+        claims.put("id", userEntity.getId());//agrega el id del usuario al mapa de claims
+        claims.put("name", userEntity.getName());//agrega el nombre del usuario al mapa de claims
         return jwtEncoder.generateToken(claims);//retorna el token generado con los claims
     }
 
