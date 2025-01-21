@@ -11,9 +11,18 @@
     </div>
     <div class="user">
         <div>
-          <button mat-icon-button (click)="loginForm()">
-            <mat-icon>person</mat-icon>
-          </button>
+            @if(session == false){
+                <button mat-icon-button (click)="loginForm()">
+                    <mat-icon>person</mat-icon>
+                </button>
+
+            }@if(session == true) {
+                <button mat-icon-button (click)="logout()">
+                    <mat-icon>logout</mat-icon>
+
+                </button>
+            }
+
         </div>
 
     </div>
