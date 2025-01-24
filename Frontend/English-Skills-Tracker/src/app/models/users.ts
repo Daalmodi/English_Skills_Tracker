@@ -1,9 +1,10 @@
 export interface Users{
     id: number;
-    name: string;
-    email: string;
-    createdAt:string;
-    status:string;
-    lastLoginAt: string;
-    role:string;
+    name?: string;
+    email?: string;
+    createdAt?:string;
+    status?:string;
+    lastLoginAt?: string;
+    role?:string;
+    password?:string;
 }
