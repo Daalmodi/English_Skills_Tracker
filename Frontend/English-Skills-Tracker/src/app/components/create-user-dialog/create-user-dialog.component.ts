@@ -9,11 +9,10 @@ import { Users } from '../../models/users';
 import {FormsModule} from '@angular/forms';
 
 @Component({
-  selector: 'app-create-user-dialog',
-  standalone: true,
-  imports: [MatDialogModule,MatButtonModule,MatFormFieldModule,MatInputModule,MatSelectModule,FormsModule],
-  templateUrl: './create-user-dialog.component.html',
-  styleUrl: './create-user-dialog.component.sass'
+    selector: 'app-create-user-dialog',
+    imports: [MatDialogModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatSelectModule, FormsModule],
+    templateUrl: './create-user-dialog.component.html',
+    styleUrl: './create-user-dialog.component.sass'
 })
 export class CreateUserDialogComponent {
 

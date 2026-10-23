@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Skills } from '../../models/skills';
 
 @Component({
-  selector: 'app-card-template',
-  standalone: true,
-  imports: [],
-  templateUrl: './card-template.component.html',
-  styleUrl: './card-template.component.sass'
+    selector: 'app-card-template',
+    imports: [],
+    templateUrl: './card-template.component.html',
+    styleUrl: './card-template.component.sass'
 })
 export class CardTemplateComponent implements OnInit {
 

@@ -7,11 +7,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { Users } from '../../models/users';
 @Component({
-  selector: 'app-update-user-dialog',
-  standalone: true,
-  imports: [MatDialogModule,MatFormFieldModule,MatInputModule,MatSelectModule,MatButtonModule,FormsModule],
-  templateUrl: './update-user-dialog.component.html',
-  styleUrl: './update-user-dialog.component.sass'
+    selector: 'app-update-user-dialog',
+    imports: [MatDialogModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatButtonModule, FormsModule],
+    templateUrl: './update-user-dialog.component.html',
+    styleUrl: './update-user-dialog.component.sass'
 })
 export class UpdateUserDialogComponent {
   public  dialogStatus = false;

@@ -4,11 +4,10 @@ import { CardTemplateComponent } from '../../components/card-template/card-templ
 import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
-  selector: 'app-home-page',
-  standalone: true,
-  imports: [HeaderComponent,CardTemplateComponent,FooterComponent],
-  templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.sass'
+    selector: 'app-home-page',
+    imports: [HeaderComponent, CardTemplateComponent, FooterComponent],
+    templateUrl: './home-page.component.html',
+    styleUrl: './home-page.component.sass'
 })
 export class HomePageComponent{
 
