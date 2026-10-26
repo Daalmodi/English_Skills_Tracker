@@ -1,9 +1,9 @@
 package com.example.EnglishSkillTrackerCRUD.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties.Authentication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -39,12 +39,12 @@ public class UserController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUserById(@PathVariable Long id){
+    public ResponseEntity<Void> deleteUserById(@PathVariable UUID id){
         userService.deleteUserById(id);
         return ResponseEntity.noContent().build();
     }
     @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> editUserId(@PathVariable Long id, @RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserDTO> editUserId(@PathVariable UUID id, @RequestBody UserDTO userDTO) {
         UserDTO userDTOEdited = userService.editUserId(id,userDTO);
         
         return ResponseEntity.ok(userDTOEdited);
@@ -53,7 +53,7 @@ public class UserController {
     // Metodos de Autenticacion y autorizacion 
     @PostMapping("/loggin")
     public String login(@RequestBody UserDTO userDTO) {
-        UsernamePasswordAuthenticationToken authenticationToken =new UsernamePasswordAuthenticationToken(userDTO.getName(), userDTO.getPassword());
+        UsernamePasswordAuthenticationToken authenticationToken =new UsernamePasswordAuthenticationToken(userDTO.getName(), userDTO.getPassword_hash());
       
         return "Token de autenticacion";
     }
