@@ -3,6 +3,8 @@ package com.example.EnglishSkillTrackerCRUD.controller;
 import java.util.List;
 import java.util.UUID;
 
+import com.example.EnglishSkillTrackerCRUD.service.abstraction.IUserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,12 +23,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 
 @RestController
-@RequestMapping("/users")//ruta de end point  para el manejo de ususarios  CRUD 
+@RequestMapping("/api/v1/users")//ruta de end point  para el manejo de ususarios  CRUD
+@RequiredArgsConstructor
 public class UserController {
-    @Autowired
-    private UserService userService;
-
-    
+    private final IUserService userService;
     @PostMapping
     public UserDTO createUser(@RequestBody UserDTO userDto){
         return userService.createUser(userDto);
@@ -49,29 +49,6 @@ public class UserController {
         
         return ResponseEntity.ok(userDTOEdited);
     }
-
-    // Metodos de Autenticacion y autorizacion 
-    @PostMapping("/loggin")
-    public String login(@RequestBody UserDTO userDTO) {
-        UsernamePasswordAuthenticationToken authenticationToken =new UsernamePasswordAuthenticationToken(userDTO.getName(), userDTO.getPassword_hash());
-      
-        return "Token de autenticacion";
-    }
-
-    @PostMapping("/register")
-    public String postMethodName(@RequestBody UserDTO userDTO) {
-        
-        
-        return "userDTO";
-    }
-    @GetMapping("/profile")
-    public UserDTO getProfile(@AuthenticationPrincipal UserDTO userDTO) {
-        // Lógica para obtener el perfil del usuario
-        // ...
-        return userDTO;
-    }
-    
-    
 
 
 }
