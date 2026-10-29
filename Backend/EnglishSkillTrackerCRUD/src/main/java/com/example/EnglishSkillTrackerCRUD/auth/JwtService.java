@@ -11,7 +11,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.Date;
 
 @Service
-public class JwtService {
+public class JwtService implements ITokenService {
     @Value("${jwt.secret}")
     private String secret;
     @Value("${jwt.expiration}")
@@ -20,7 +20,7 @@ public class JwtService {
     private SecretKey getSigningKey() {
         return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
     }
-
+    @Override
     public String generateToken(String username) {
         return Jwts.builder()
                 .subject(username)
@@ -28,5 +28,10 @@ public class JwtService {
                 .expiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(getSigningKey())
                 .compact();
+    }
+
+    @Override
+    public long getExpiration() {
+        return expiration;
     }
 }
