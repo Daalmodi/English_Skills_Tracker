@@ -28,7 +28,7 @@ public class UserEntity {
     private String name;
     @Column(nullable = false)
     private String lastName;
-    @Column(updatable = true,nullable = true)
+    @Column(nullable = true)
     private LocalDateTime createdAt = LocalDateTime.now();
     @NotNull
     @Column(unique = true,nullable = false)

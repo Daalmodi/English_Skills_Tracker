@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class AuthService implements IAuthService {
     private final AuthenticationManager authenticationManager;
     private final ITokenService tokenService;
-    private IUserService userService;
+    private final IUserService userService;
     @Override
     public UserDTO register(UserDTO userDTO) {
         return userService.createUser(userDTO);
