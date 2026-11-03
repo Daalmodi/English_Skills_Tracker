@@ -25,7 +25,7 @@ public class UserService implements IUserService {
         UserEntity userEntity =userMapper.convertEntity(userDTO);
         String rawPassword = (userDTO.getPassword_hash() != null && !userDTO.getPassword_hash().isBlank())
                 ? userDTO.getPassword_hash()
-                : UUID.randomUUID().toString().substring(0, 8);
+                : "TempPass123!";
         userEntity.setPassword_hash(passwordEncoder.encode(rawPassword));
         UserEntity userEntityCreated = userRepository.save(userEntity);
         return userMapper.convertDTO(userEntityCreated);

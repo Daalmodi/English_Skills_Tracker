@@ -4,8 +4,11 @@ import java.util.List;
 import java.util.UUID;
 
 import com.example.EnglishSkillTrackerCRUD.service.abstraction.IUserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -28,14 +31,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class UserController {
     private final IUserService userService;
     @PostMapping
-    public UserDTO createUser(@RequestBody UserDTO userDto){
-        return userService.createUser(userDto);
+    public ResponseEntity<UserDTO> createUser(@Valid @RequestBody UserDTO userDto){
+        UserDTO user = userService.createUser(userDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 
     @GetMapping
-    public List<UserDTO> getUsers(){
+    public  ResponseEntity<List<UserDTO>> getUsers(){
         List<UserDTO> userDTOs = userService.getUsers();
-        return userDTOs;
+        return ResponseEntity.ok(userDTOs);
     }
 
     @DeleteMapping("/{id}")
@@ -44,7 +48,7 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
     @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> editUserId(@PathVariable UUID id, @RequestBody UserDTO userDTO) {
+    public ResponseEntity<UserDTO> editUserId(@PathVariable UUID id,@Valid @RequestBody UserDTO userDTO) {
         UserDTO userDTOEdited = userService.editUserId(id,userDTO);
         
         return ResponseEntity.ok(userDTOEdited);

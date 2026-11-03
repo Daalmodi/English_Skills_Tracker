@@ -4,6 +4,9 @@ import com.example.EnglishSkillTrackerCRUD.model.RoleEnum;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "roles")
 @Data
@@ -15,5 +18,12 @@ public class RoleEntity {
    @Enumerated(EnumType.STRING)
     private RoleEnum name;
     private String description;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "roles_permission",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "permission_id")
+    )
+    private Set<PermissionEntity> permissions  = new HashSet<>();
 
 }
