@@ -7,6 +7,11 @@
         </mat-form-field>
         <br/>
         <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput [(ngModel)]="user.lastName" name="lastName">
+        </mat-form-field>
+        <br/>
+        <mat-form-field>
             <mat-label>Email</mat-label>
             <input matInput [(ngModel)]="user.email" name="email">
         </mat-form-field>
@@ -30,6 +35,6 @@
         <mat-dialog-actions align="end">
             <button mat-button mat-dialog-close>Cancel</button>
             <button mat-button type="submit">Update</button>
-        </mat-dialog-actions> 
+        </mat-dialog-actions>
     </form>
 </mat-dialog-content>

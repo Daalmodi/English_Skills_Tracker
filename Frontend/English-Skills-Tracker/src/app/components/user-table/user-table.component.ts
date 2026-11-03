@@ -1,6 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
-import { HeaderComponent } from '../../components/header/header.component';
+import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 
 import { MatSortModule } from '@angular/material/sort';
@@ -27,7 +26,7 @@ export class UserTableComponent  implements OnInit{
 
   users:Users[]=[];
 
-  columnsToDisplay=['id', 'name', 'email', 'createdAt', 'status', 'lastLoginAt','role','actions'];
+  columnsToDisplay=[ 'name', 'lastName', 'email', 'createdAt', 'status','actions'];
   readonly dialog = inject(MatDialog);
   constructor(private usersService: UsersService){}
 

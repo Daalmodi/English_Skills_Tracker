@@ -1,7 +1,7 @@
 # ==========================================
 # Etapa 1: Desarrollo con Hot Reload (Dev)
 # ==========================================
-FROM node:20-alpine AS dev
+FROM node:22-alpine AS dev
 WORKDIR /app
 
 COPY package*.json ./
@@ -17,7 +17,7 @@ CMD ["npm", "run", "start", "--", "--host", "0.0.0.0", "--poll", "1000"]
 # ==========================================
 # Etapa 2: Construcción (Build)
 # ==========================================
-FROM node:20-alpine AS build
+FROM node:22-alpine AS build
 WORKDIR /app
 
 # Copiar archivos de dependencias e instalarlas

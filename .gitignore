@@ -1,0 +1,13 @@
+# Variables de entorno con credenciales
+.env
+.env.local
+.env.*.local
+# Archivos y carpeta de LaTeX
+latex/
+*.aux
+*.log
+*.out
+*.pdf
+*.toc
+*.synctex.gz
+

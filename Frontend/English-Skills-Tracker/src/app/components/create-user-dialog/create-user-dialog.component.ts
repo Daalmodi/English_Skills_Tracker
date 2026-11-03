@@ -1,6 +1,5 @@
-import { Component, inject} from '@angular/core';
-import {} from '@angular/material/dialog';
-import { MatDialogModule,MatDialogRef} from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -21,6 +20,7 @@ export class CreateUserDialogComponent {
  user:Users = {
   id:NaN,
   name:"",
+  lastName:"",
   email:"",
   lastLoginAt:"",
   createdAt:"",
@@ -28,11 +28,12 @@ export class CreateUserDialogComponent {
   role :""
  };
 
- 
+
   onSubmit(){
-  
+
     const newUser = {
       name: this.user.name,
+      lastName:this.user.lastName,
       email: this.user.email,
       password: this.user.name, // Contraseña por defecto  es el nombre del usuario
       status: this.user.status,
@@ -45,5 +46,5 @@ export class CreateUserDialogComponent {
 
     this.dialogRef.close({newUser, dialogStatus: this.dialogStatus});
   }
-  
+
 }

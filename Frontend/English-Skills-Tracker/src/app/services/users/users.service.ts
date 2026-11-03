@@ -8,7 +8,7 @@ import { Users } from '../../models/users';
   providedIn: 'root'
 })
 export class UsersService {
-  private apiUrl = 'http://localhost:8080/users';//end point backend 
+  private apiUrl = 'http://localhost:8080/api/v1/users';//end point backend
   private userSubject = new BehaviorSubject<Users[]>([]); // Instancia de objeto para actualizar componente
 
   constructor(private http: HttpClient) { }
@@ -24,7 +24,7 @@ export class UsersService {
   createUser(newUser:Users):Observable<Users>{
 
     console.log(newUser);
-    
+
     return this.http.post<Users>(this.apiUrl,newUser).pipe(
       tap(()=>{
         this.getUsers().subscribe();
@@ -49,7 +49,7 @@ export class UsersService {
     );
   }
 
-  
+
 
   getUsersObservable(): Observable<Users[]> {
     return this.userSubject.asObservable();
