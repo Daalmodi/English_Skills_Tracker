@@ -50,7 +50,6 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<UserDTO> editUserId(@PathVariable UUID id,@Valid @RequestBody UserDTO userDTO) {
         UserDTO userDTOEdited = userService.editUserId(id,userDTO);
-        
         return ResponseEntity.ok(userDTOEdited);
     }
 

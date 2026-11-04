@@ -1,12 +1,10 @@
 package com.example.EnglishSkillTrackerCRUD.dto;
 
+import com.example.EnglishSkillTrackerCRUD.entity.RoleEntity;
+import com.example.EnglishSkillTrackerCRUD.model.RoleEnum;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import lombok.Data;
-
 import java.time.LocalDateTime;
 import java.util.UUID;
 @Data
@@ -29,6 +27,9 @@ public class UserDTO {
             message = "Password Must be at least  characters and include uppercase, a number and a special character"
     )
     private String password_hash;
+
+    @NotNull
+    private RoleEnum userRole = RoleEnum.ROLE_STUDENT;
 
 
 }
