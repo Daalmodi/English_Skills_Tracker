@@ -28,8 +28,7 @@ public class UserDTO {
     )
     private String password_hash;
 
-    @NotNull
-    private RoleEnum userRole = RoleEnum.ROLE_STUDENT;
+    private RoleEnum userRole;
 
 
 }

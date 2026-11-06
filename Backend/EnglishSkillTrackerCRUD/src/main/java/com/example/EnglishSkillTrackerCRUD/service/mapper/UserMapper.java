@@ -31,10 +31,7 @@ public class UserMapper {
         if (userDto.getStatus() != null) {
             userEntity.setStatus(userDto.getStatus());
         }
-//        if (userDto.getRole() != null) {
-//            userEntity.setRole(userDto.getRole());
-//            System.out.println("Aqui va el rol");
-//        }
+
         return userEntity;
     }
 }

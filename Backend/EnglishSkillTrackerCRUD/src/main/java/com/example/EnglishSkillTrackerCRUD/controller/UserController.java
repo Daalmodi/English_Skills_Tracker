@@ -41,6 +41,12 @@ public class UserController {
         List<UserDTO> userDTOs = userService.getUsers();
         return ResponseEntity.ok(userDTOs);
     }
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDTO> getUserById(@PathVariable UUID id){
+        UserDTO userDTO =  userService.getUserById(id);
+        return ResponseEntity.ok(userDTO);
+
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUserById(@PathVariable UUID id){
