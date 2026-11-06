@@ -25,7 +25,7 @@ export class CreateUserDialogComponent {
   lastLoginAt:"",
   createdAt:"",
   status:"",
-  role :""
+  userRole :""
  };
 
 
@@ -37,7 +37,7 @@ export class CreateUserDialogComponent {
       email: this.user.email,
       password: this.user.name, // Contraseña por defecto  es el nombre del usuario
       status: this.user.status,
-      role: this.user.role,
+      userRole: this.user.userRole,
       lastLoginAt: "Not Initialized"
 
     };

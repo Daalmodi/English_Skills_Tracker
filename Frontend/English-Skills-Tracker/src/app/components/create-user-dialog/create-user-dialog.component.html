@@ -7,15 +7,21 @@
       </mat-form-field>
       <br/>
       <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput required [(ngModel)]="user.lastName" name="lastName" id="lastName">
+      </mat-form-field>
+      <br/>
+      <mat-form-field>
          <mat-label>Email</mat-label>
          <input matInput [(ngModel)]="user.email" name="email" id="email">
       </mat-form-field>
       <br/>
       <mat-form-field>
          <mat-label>Role</mat-label>
-       <mat-select [(ngModel)]="user.role" name="role" id="role">
-         <mat-option value="ADMINISTRATOR">Administrator</mat-option>
-         <mat-option value="STUDENT">Student</mat-option>
+       <mat-select [(ngModel)]="user.userRole" name="userRole" id="role">
+         <mat-option value="ROLE_ADMIN">Administrator</mat-option>
+         <mat-option value="ROLE_INSTRUCTOR">Instructor</mat-option>
+         <mat-option value="ROLE_STUDENT">Student</mat-option>
        </mat-select>
       </mat-form-field>
       <br/>
@@ -29,8 +35,8 @@
      <mat-dialog-actions align="end">
          <button mat-button mat-dialog-close>Cancel</button>
          <button mat-button type="submit">Create</button>
-     </mat-dialog-actions> 
+     </mat-dialog-actions>
    </form>
-</mat-dialog-content>   
- 
+</mat-dialog-content>
+
 
